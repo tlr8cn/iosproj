@@ -14,6 +14,14 @@
 		2FC3BA6A1C77D279000B034A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC3BA691C77D279000B034A /* Images.xcassets */; };
 		2FC3BA6D1C77D279000B034A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC3BA6B1C77D279000B034A /* LaunchScreen.xib */; };
 		2FC3BA791C77D279000B034A /* RemindMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3BA781C77D279000B034A /* RemindMeTests.swift */; };
+		753769201C7AEA8000424B97 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537691F1C7AEA8000424B97 /* Reminder.swift */; };
+		753769211C7AEA8000424B97 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537691F1C7AEA8000424B97 /* Reminder.swift */; };
+		753769231C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769221C7AF16600424B97 /* ReminderTableViewCell.swift */; };
+		753769241C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769221C7AF16600424B97 /* ReminderTableViewCell.swift */; };
+		753769261C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769251C7B39EC00424B97 /* ReminderTableViewController.swift */; };
+		753769271C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769251C7B39EC00424B97 /* ReminderTableViewController.swift */; };
+		753769291C7B72AF00424B97 /* setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769281C7B72AF00424B97 /* setup.swift */; };
+		7537692A1C7B72AF00424B97 /* setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769281C7B72AF00424B97 /* setup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +46,10 @@
 		2FC3BA721C77D279000B034A /* RemindMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemindMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC3BA771C77D279000B034A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FC3BA781C77D279000B034A /* RemindMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindMeTests.swift; sourceTree = "<group>"; };
+		7537691F1C7AEA8000424B97 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		753769221C7AF16600424B97 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		753769251C7B39EC00424B97 /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
+		753769281C7B72AF00424B97 /* setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +93,11 @@
 			children = (
 				2FC3BA5F1C77D279000B034A /* AppDelegate.swift */,
 				2FC3BA641C77D279000B034A /* ViewController.swift */,
+				7537691F1C7AEA8000424B97 /* Reminder.swift */,
+				753769221C7AF16600424B97 /* ReminderTableViewCell.swift */,
+				753769251C7B39EC00424B97 /* ReminderTableViewController.swift */,
 				2FC3BA661C77D279000B034A /* Main.storyboard */,
+				753769281C7B72AF00424B97 /* setup.swift */,
 				2FC3BA691C77D279000B034A /* Images.xcassets */,
 				2FC3BA6B1C77D279000B034A /* LaunchScreen.xib */,
 				2FC3BA611C77D279000B034A /* RemindMe.xcdatamodeld */,
@@ -159,6 +175,7 @@
 		2FC3BA521C77D279000B034A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Tyler Robinson";
 				TargetAttributes = {
@@ -218,6 +235,10 @@
 				2FC3BA651C77D279000B034A /* ViewController.swift in Sources */,
 				2FC3BA631C77D279000B034A /* RemindMe.xcdatamodeld in Sources */,
 				2FC3BA601C77D279000B034A /* AppDelegate.swift in Sources */,
+				753769291C7B72AF00424B97 /* setup.swift in Sources */,
+				753769201C7AEA8000424B97 /* Reminder.swift in Sources */,
+				753769231C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */,
+				753769261C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +247,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FC3BA791C77D279000B034A /* RemindMeTests.swift in Sources */,
+				753769241C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */,
+				753769211C7AEA8000424B97 /* Reminder.swift in Sources */,
+				7537692A1C7B72AF00424B97 /* setup.swift in Sources */,
+				753769271C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +434,7 @@
 				2FC3BA7E1C77D279000B034A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2FC3BA7F1C77D279000B034A /* Build configuration list for PBXNativeTarget "RemindMeTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +443,7 @@
 				2FC3BA811C77D279000B034A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

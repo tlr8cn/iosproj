@@ -19,9 +19,9 @@ class ReminderTableViewCell : UITableViewCell {
     
     
     
-    override func viewDidLoad() {
+ /*   override func viewDidLoad() {
         super.viewDidLoad()
-    }
+    }*/
     
     
     

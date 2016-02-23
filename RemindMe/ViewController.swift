@@ -42,8 +42,8 @@ class ViewController: UIViewController, DataEnteredDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var remind = Remind(name: "yes")
-        self.view.addSubview(Remind)
+        //var remind = Remind(name: "yes")
+        //self.view.addSubview(Remind)
         
     }
     
@@ -56,12 +56,13 @@ class ViewController: UIViewController, DataEnteredDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "AddEntry") {
-            if let svc = segue.destinationViewController as? ViewControllerB {
-                svc.nameToDisplay = remindText.text!
-                
-                
-            }
+            let svc = segue.destinationViewController as! ViewControllerB
+            svc.delegate = self
         }
+    }
+    
+    func userDidEnterInformation(info: String) {
+        //place label info here potentially
     }
 
 

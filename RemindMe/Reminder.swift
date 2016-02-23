@@ -14,14 +14,14 @@ class Reminder {
     // MARK: Properties
     
     var name: String
-    var date: NSDateFormatter
+    //var date: NSDateFormatter
     
     
     // MARK: Initialization
     
-    init?(name: String, date: NSDateFormatter){
+    init?(name: String){
         self.name = name
-        self.date = date
+        //self.date = date
         if name.isEmpty {
             return nil
         }

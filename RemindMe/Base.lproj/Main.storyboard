@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1mt-gX-k39">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="JRo-LJ-hp2">
+            <objects>
+                <navigationController id="1mt-gX-k39" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PxX-J4-0dK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="biL-bp-35k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fol-mf-UaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1126" y="270"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -29,7 +45,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="6Uc-vl-UKQ" kind="show" id="XbW-pw-f5i"/>
+                                                <segue destination="6Uc-vl-UKQ" kind="show" identifier="AddEntry" id="XbW-pw-f5i"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -60,18 +76,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1zF-8s-u66"/>
                     <connections>
                         <outlet property="Add" destination="jvb-bh-jEr" id="DfL-Mx-540"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="299"/>
+            <point key="canvasLocation" x="-436" y="270"/>
         </scene>
         <!--Title-->
         <scene sceneID="hfI-1y-XYa">
             <objects>
-                <viewController id="6Uc-vl-UKQ" sceneMemberID="viewController">
+                <viewController id="6Uc-vl-UKQ" customClass="ViewControllerB" customModule="RemindMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JdK-hb-GtS"/>
                         <viewControllerLayoutGuide type="bottom" id="dzc-ZM-CXx"/>
@@ -81,16 +98,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminder Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBy-Hg-Dhs">
-                                <rect key="frame" x="219" y="99" width="183" height="30"/>
+                                <rect key="frame" x="219" y="100" width="183" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Reminder Description (has to be programmatically changed to a placeholder)" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bis-A5-a3g">
-                                <rect key="frame" x="190" y="152" width="240" height="95"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwR-jn-Kjr">
+                                <rect key="frame" x="260" y="532" width="100" height="30"/>
+                                <state key="normal" title="Set Reminder"/>
+                                <connections>
+                                    <action selector="sendInfoButton:" destination="6Uc-vl-UKQ" eventType="touchUpInside" id="Hld-US-y2E"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Create New Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9F-eA-aAA">
+                                <rect key="frame" x="219" y="56" width="183" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Description" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tpq-Ra-9Ig">
+                                <rect key="frame" x="219" y="174" width="183" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fWg-Xf-3DF">
                                 <rect key="frame" x="118" y="279" width="374" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="477805980.19545799">
@@ -103,33 +132,24 @@
                                     <!--2037-12-31 11:00:00 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwR-jn-Kjr">
-                                <rect key="frame" x="260" y="532" width="100" height="30"/>
-                                <state key="normal" title="Set Reminder"/>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="AddEntry" id="mrL-8K-eS3"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Create New Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9F-eA-aAA">
-                                <rect key="frame" x="219" y="56" width="183" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="oBy-Hg-Dhs" secondAttribute="centerX" constant="-10.5" id="5M9-dL-d8h"/>
                             <constraint firstAttribute="width" secondItem="H9F-eA-aAA" secondAttribute="width" id="N4n-lk-hFj"/>
                             <constraint firstAttribute="centerX" secondItem="H9F-eA-aAA" secondAttribute="centerX" constant="-10.5" id="Z8q-EW-az3"/>
-                            <constraint firstAttribute="centerX" secondItem="bis-A5-a3g" secondAttribute="centerX" constant="-10" id="vrY-ox-lop"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="DVk-BO-TKK"/>
+                    <connections>
+                        <outlet property="date" destination="fWg-Xf-3DF" id="zTU-Pk-zEj"/>
+                        <outlet property="desc" destination="Tpq-Ra-9Ig" id="LTB-GM-8qs"/>
+                        <outlet property="remindText" destination="oBy-Hg-Dhs" id="kQg-Yr-ixr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTF-lh-BFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="1136"/>
+            <point key="canvasLocation" x="436" y="270"/>
         </scene>
     </scenes>
 </document>

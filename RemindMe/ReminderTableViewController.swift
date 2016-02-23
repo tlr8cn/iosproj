@@ -6,7 +6,7 @@
 //  Copyright © 2016 Tyler Robinson. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
 class ReminderTableViewController: UITableViewController {
     

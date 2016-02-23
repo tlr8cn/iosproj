@@ -7,8 +7,34 @@
 //
 
 import UIKit
+import Foundation
 
-class ViewController: UIViewController {
+
+
+class Remind {
+    
+    // MARK: Properties
+    
+    var name: String
+    //var date: NSDateFormatter
+    
+    
+    // MARK: Initialization
+    
+    init?(name: String){
+        self.name = name
+        //self.date = date
+        if name.isEmpty {
+            return nil
+        }
+    }
+    
+}
+
+
+class ViewController: UIViewController, DataEnteredDelegate {
+    
+    
 
     // MARK: Properties
     
@@ -16,6 +42,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        var remind = Remind(name: "yes")
+        self.view.addSubview(Remind)
+        
     }
     
 
@@ -23,6 +52,18 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "AddEntry") {
+            if let svc = segue.destinationViewController as? ViewControllerB {
+                svc.nameToDisplay = remindText.text!
+                
+                
+            }
+        }
+    }
+
 
 
 

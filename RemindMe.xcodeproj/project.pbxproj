@@ -20,8 +20,8 @@
 		753769241C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769221C7AF16600424B97 /* ReminderTableViewCell.swift */; };
 		753769261C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769251C7B39EC00424B97 /* ReminderTableViewController.swift */; };
 		753769271C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769251C7B39EC00424B97 /* ReminderTableViewController.swift */; };
-		753769291C7B72AF00424B97 /* setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769281C7B72AF00424B97 /* setup.swift */; };
-		7537692A1C7B72AF00424B97 /* setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769281C7B72AF00424B97 /* setup.swift */; };
+		753769291C7B72AF00424B97 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769281C7B72AF00424B97 /* ViewControllerB.swift */; };
+		7537692A1C7B72AF00424B97 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769281C7B72AF00424B97 /* ViewControllerB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,7 @@
 		7537691F1C7AEA8000424B97 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		753769221C7AF16600424B97 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		753769251C7B39EC00424B97 /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
-		753769281C7B72AF00424B97 /* setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setup.swift; sourceTree = "<group>"; };
+		753769281C7B72AF00424B97 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +97,7 @@
 				753769221C7AF16600424B97 /* ReminderTableViewCell.swift */,
 				753769251C7B39EC00424B97 /* ReminderTableViewController.swift */,
 				2FC3BA661C77D279000B034A /* Main.storyboard */,
-				753769281C7B72AF00424B97 /* setup.swift */,
+				753769281C7B72AF00424B97 /* ViewControllerB.swift */,
 				2FC3BA691C77D279000B034A /* Images.xcassets */,
 				2FC3BA6B1C77D279000B034A /* LaunchScreen.xib */,
 				2FC3BA611C77D279000B034A /* RemindMe.xcdatamodeld */,
@@ -235,7 +235,7 @@
 				2FC3BA651C77D279000B034A /* ViewController.swift in Sources */,
 				2FC3BA631C77D279000B034A /* RemindMe.xcdatamodeld in Sources */,
 				2FC3BA601C77D279000B034A /* AppDelegate.swift in Sources */,
-				753769291C7B72AF00424B97 /* setup.swift in Sources */,
+				753769291C7B72AF00424B97 /* ViewControllerB.swift in Sources */,
 				753769201C7AEA8000424B97 /* Reminder.swift in Sources */,
 				753769231C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */,
 				753769261C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */,
@@ -249,7 +249,7 @@
 				2FC3BA791C77D279000B034A /* RemindMeTests.swift in Sources */,
 				753769241C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */,
 				753769211C7AEA8000424B97 /* Reminder.swift in Sources */,
-				7537692A1C7B72AF00424B97 /* setup.swift in Sources */,
+				7537692A1C7B72AF00424B97 /* ViewControllerB.swift in Sources */,
 				753769271C7B39EC00424B97 /* ReminderTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

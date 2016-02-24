@@ -28,8 +28,16 @@ class ViewControllerB: UIViewController {
     
     @IBAction func sendInfoButton(sender: AnyObject) {
         
-        delegate?.userDidEnterInformation(remindText.text!)
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyy HH:mm"
+        var strDate = dateFormatter.stringFromDate(date.date)
         
+        var data_str = remindText.text! + "&&&" + desc.text! + "&&&" + strDate
+        
+        delegate?.userDidEnterInformation(data_str)
+
+        
+        //back to previous view controller
         self.navigationController?.popViewControllerAnimated(true)
         
     }

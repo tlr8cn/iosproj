@@ -100,6 +100,13 @@ class ViewController: UIViewController, DataEnteredDelegate {
             date_label.text = reminder_list.reminder_dates[i]
             separator.text = "________________________________"
             
+            descr_label.textColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
+            descr_label.font = descr_label.font.fontWithSize(11)
+            
+            date_label.textColor = UIColor.blackColor().colorWithAlphaComponent(0.60)
+            date_label.font = date_label.font.fontWithSize(9)
+            
+            
             separator.textColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             
             self.view.addSubview(name_label)

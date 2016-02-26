@@ -78,9 +78,9 @@ class ViewController: UIViewController, DataEnteredDelegate {
         self.reminder_list.addReminder(input_array[0], description: input_array[1], date: input_array[2])
         
         
-        for label in self.view.subviews {
-            if label is UILabel {
-                label.removeFromSuperview()
+        for subview in self.view.subviews {
+            if subview is UILabel || subview is UIButton{
+                subview.removeFromSuperview()
             }
             
         }
@@ -90,22 +90,25 @@ class ViewController: UIViewController, DataEnteredDelegate {
         
         for var i = 0; i < reminder_list.reminder_names.count; ++i {
             
-            var name_label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+            var name_button = UIButton(frame: CGRectMake(0, 0, 200, 21))
             var descr_label = UILabel(frame: CGRectMake(0, 0, 200, 21))
             var date_label = UILabel(frame: CGRectMake(0, 0, 200, 21))
             var separator = UILabel(frame: CGRectMake(0, 0, self.view.frame.size.width, 21))
             
-            name_label.center = CGPointMake(160, CGFloat(counter))
+            
+            
+            name_button.center = CGPointMake(160, CGFloat(counter))
             descr_label.center = CGPointMake(160, CGFloat(counter + 15))
             date_label.center = CGPointMake(160, CGFloat(counter + 30))
             separator.center = CGPointMake(160, CGFloat(counter + 45))
             
-            name_label.textAlignment = NSTextAlignment.Center
+       //     name_button.textAlignment = NSTextAlignment.Center
             descr_label.textAlignment = NSTextAlignment.Center
             date_label.textAlignment = NSTextAlignment.Center
             separator.textAlignment = NSTextAlignment.Center
             
-            name_label.text = reminder_list.reminder_names[i]
+            name_button.setTitle(reminder_list.reminder_names[i], forState: UIControlState.Normal)
+            name_button.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             descr_label.text = reminder_list.reminder_descripts[i]
             date_label.text = reminder_list.reminder_dates[i]
             separator.text = "________________________________"
@@ -117,9 +120,11 @@ class ViewController: UIViewController, DataEnteredDelegate {
             date_label.font = date_label.font.fontWithSize(9)
             
             
+            name_button.addTarget(self, action: "showInfo:", forControlEvents: UIControlEvents.TouchUpInside)
+            
             separator.textColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             
-            self.view.addSubview(name_label)
+            self.view.addSubview(name_button)
             self.view.addSubview(descr_label)
             self.view.addSubview(date_label)
             self.view.addSubview(separator)
@@ -140,6 +145,10 @@ class ViewController: UIViewController, DataEnteredDelegate {
     }
 
 
+    func showInfo(sender: UIButton!) {
+
+        
+    }
 
 
     

@@ -15,6 +15,7 @@
 		2FC3BA6D1C77D279000B034A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC3BA6B1C77D279000B034A /* LaunchScreen.xib */; };
 		2FC3BA791C77D279000B034A /* RemindMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3BA781C77D279000B034A /* RemindMeTests.swift */; };
 		2FC3BA831C7C021F000B034A /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3BA821C7C021F000B034A /* ReminderList.swift */; };
+		2FDEAE621C8010BB00E2B0A3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEAE611C8010BB00E2B0A3 /* EditViewController.swift */; };
 		753769201C7AEA8000424B97 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537691F1C7AEA8000424B97 /* Reminder.swift */; };
 		753769211C7AEA8000424B97 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537691F1C7AEA8000424B97 /* Reminder.swift */; };
 		753769231C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753769221C7AF16600424B97 /* ReminderTableViewCell.swift */; };
@@ -47,6 +48,7 @@
 		2FC3BA771C77D279000B034A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FC3BA781C77D279000B034A /* RemindMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindMeTests.swift; sourceTree = "<group>"; };
 		2FC3BA821C7C021F000B034A /* ReminderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
+		2FDEAE611C8010BB00E2B0A3 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		7537691F1C7AEA8000424B97 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		753769221C7AF16600424B97 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		753769281C7B72AF00424B97 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC3BA821C7C021F000B034A /* ReminderList.swift */,
+				2FDEAE611C8010BB00E2B0A3 /* EditViewController.swift */,
 				7537692E1C7C082500424B97 /* ReminderTableController.swift */,
 				2FC3BA5F1C77D279000B034A /* AppDelegate.swift */,
 				2FC3BA641C77D279000B034A /* ViewController.swift */,
@@ -242,6 +245,7 @@
 				753769201C7AEA8000424B97 /* Reminder.swift in Sources */,
 				753769231C7AF16600424B97 /* ReminderTableViewCell.swift in Sources */,
 				2FC3BA831C7C021F000B034A /* ReminderList.swift in Sources */,
+				2FDEAE621C8010BB00E2B0A3 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

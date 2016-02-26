@@ -65,7 +65,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "AddEntry") {
-            let svc = segue.destinationViewController as ViewControllerB
+            let svc = segue.destinationViewController as! ViewControllerB
             svc.delegate = self
         }
     }
@@ -76,6 +76,16 @@ class ViewController: UIViewController, DataEnteredDelegate {
         let input_array = info.componentsSeparatedByString("&&&")
         
         self.reminder_list.addReminder(input_array[0], description: input_array[1], date: input_array[2])
+        
+        
+        for label in self.view.subviews {
+            if label is UILabel {
+                label.removeFromSuperview()
+            }
+            
+        }
+        
+        
         var counter = 80.0
         
         for var i = 0; i < reminder_list.reminder_names.count; ++i {

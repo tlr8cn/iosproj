@@ -29,7 +29,7 @@ class ViewControllerB: UIViewController {
     @IBAction func sendInfoButton(sender: AnyObject) {
         
         var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyy HH:mm"
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
         var strDate = dateFormatter.stringFromDate(date.date)
         
         var data_str = remindText.text! + "&&&" + desc.text! + "&&&" + strDate

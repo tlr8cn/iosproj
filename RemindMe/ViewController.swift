@@ -68,6 +68,8 @@ class ViewController: UIViewController, DataEnteredDelegate {
             let svc = segue.destinationViewController as! ViewControllerB
             svc.delegate = self
         }
+        
+        
     }
     
     func userDidEnterInformation(info: String) {
@@ -146,7 +148,8 @@ class ViewController: UIViewController, DataEnteredDelegate {
 
 
     func showInfo(sender: UIButton!) {
-
+        
+        performSegueWithIdentifier("EditEntry", sender: nil)
         
     }
 

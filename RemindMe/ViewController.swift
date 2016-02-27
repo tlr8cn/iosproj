@@ -42,6 +42,11 @@ class ViewController: UIViewController, DataEnteredDelegate {
 
     // MARK: Properties
     
+    var tapped_button_tag = -1
+    
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     let reminder_list = ReminderList.sharedInstance
     
     
@@ -67,9 +72,14 @@ class ViewController: UIViewController, DataEnteredDelegate {
         if (segue.identifier == "AddEntry") {
             let svc = segue.destinationViewController as! ViewControllerB
             svc.delegate = self
+        
+        } else if(segue.identifier == "EditEntry") {
+            let svc = segue.destinationViewController as! EditViewController
+            
+            svc.button_tag = tapped_button_tag
         }
         
-        
+
     }
     
     func userDidEnterInformation(info: String) {
@@ -80,7 +90,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
         self.reminder_list.addReminder(input_array[0], description: input_array[1], date: input_array[2])
         
         
-        for subview in self.view.subviews {
+        for subview in scrollView.subviews {
             if subview is UILabel || subview is UIButton{
                 subview.removeFromSuperview()
             }
@@ -88,7 +98,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
         }
         
         
-        var counter = 80.0
+        var counter = 0.0
         
         for var i = 0; i < reminder_list.reminder_names.count; ++i {
             
@@ -126,10 +136,20 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
             separator.textColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             
-            self.view.addSubview(name_button)
-            self.view.addSubview(descr_label)
-            self.view.addSubview(date_label)
-            self.view.addSubview(separator)
+  //          self.view.addSubview(name_button)
+   //         self.view.addSubview(descr_label)
+   //         self.view.addSubview(date_label)
+    //        self.view.addSubview(separator)
+            
+            
+            name_button.tag = i
+            
+            
+            scrollView.addSubview(name_button)
+            
+            scrollView.addSubview(descr_label)
+            scrollView.addSubview(date_label)
+            scrollView.addSubview(separator)
             
             counter += 65.0
         }
@@ -149,7 +169,9 @@ class ViewController: UIViewController, DataEnteredDelegate {
 
     func showInfo(sender: UIButton!) {
         
+        tapped_button_tag = sender.tag
         performSegueWithIdentifier("EditEntry", sender: nil)
+        
         
     }
 

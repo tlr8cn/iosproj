@@ -13,6 +13,7 @@ class ReminderList {
     public var reminder_names = [String]()
     public var reminder_descripts = [String]()
     public var reminder_dates = [String]()
+
     
     
     public func addReminder(name : String, description : String, date : String) {

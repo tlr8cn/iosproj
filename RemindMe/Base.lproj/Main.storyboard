@@ -33,6 +33,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLE-2j-uTM">
+                                <rect key="frame" x="0.0" y="64" width="600" height="457"/>
+                            </scrollView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGl-cp-Q2Z">
                                 <rect key="frame" x="0.0" y="521" width="600" height="44"/>
                                 <items>
@@ -57,6 +60,7 @@
                     <navigationItem key="navigationItem" id="1zF-8s-u66"/>
                     <connections>
                         <outlet property="Add" destination="jvb-bh-jEr" id="DfL-Mx-540"/>
+                        <outlet property="scrollView" destination="aLE-2j-uTM" id="dgn-39-gG6"/>
                         <segue destination="tDR-ga-6Fs" kind="show" identifier="EditEntry" id="QVt-D0-5CY"/>
                     </connections>
                 </viewController>
@@ -94,32 +98,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Description..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXs-Pc-vlo">
-                                <rect key="frame" x="204" y="215" width="286" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Date..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mno-wf-LvH">
-                                <rect key="frame" x="204" y="282" width="286" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2H-C5-FNg">
                                 <rect key="frame" x="204" y="148" width="286" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Description..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXs-Pc-vlo">
+                                <rect key="frame" x="204" y="215" width="286" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kMj-W3-BL7">
+                                <rect key="frame" x="204" y="282" width="286" height="131"/>
+                                <date key="date" timeIntervalSinceReferenceDate="478258260.61990398">
+                                    <!--2016-02-27 09:31:00 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ben-dR-hqY" firstAttribute="centerX" secondItem="2Dn-xv-Svz" secondAttribute="centerX" id="J9G-4j-3OE"/>
                             <constraint firstItem="Kba-mw-WCm" firstAttribute="centerX" secondItem="2Dn-xv-Svz" secondAttribute="centerX" id="MZX-t6-40W"/>
                             <constraint firstItem="sxe-dQ-S5E" firstAttribute="centerX" secondItem="2Dn-xv-Svz" secondAttribute="centerX" id="WEL-Er-WtS"/>
-                            <constraint firstItem="mno-wf-LvH" firstAttribute="centerX" secondItem="2Dn-xv-Svz" secondAttribute="centerX" id="X09-rS-Xr5"/>
                             <constraint firstItem="x2H-C5-FNg" firstAttribute="centerX" secondItem="2Dn-xv-Svz" secondAttribute="centerX" id="cc6-4X-O7c"/>
+                            <constraint firstItem="kMj-W3-BL7" firstAttribute="centerX" secondItem="2Dn-xv-Svz" secondAttribute="centerX" id="qak-MS-6yj"/>
                             <constraint firstItem="yXs-Pc-vlo" firstAttribute="centerX" secondItem="2Dn-xv-Svz" secondAttribute="centerX" id="zBv-ub-Ysm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="date_picker" destination="kMj-W3-BL7" id="fCo-IE-jPV"/>
+                        <outlet property="reminder_description" destination="yXs-Pc-vlo" id="v5B-3S-lrd"/>
+                        <outlet property="reminder_name" destination="x2H-C5-FNg" id="R53-CB-Nse"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcC-M9-Ur7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -45,6 +45,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
     var tapped_button_tag = -1
     
     
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     let reminder_list = ReminderList.sharedInstance
@@ -75,7 +76,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
         
         } else if(segue.identifier == "EditEntry") {
             let svc = segue.destinationViewController as! EditViewController
-            
+            svc.delegate = self
             svc.button_tag = tapped_button_tag
         }
         
@@ -83,11 +84,12 @@ class ViewController: UIViewController, DataEnteredDelegate {
     }
     
     func userDidEnterInformation(info: String) {
-        //place label info here potentially
+        
+        //if a new reminder was added, we want to add it to the list
+        //otherwise, we want to edit an existing reminder in the list
+        
         
         let input_array = info.componentsSeparatedByString("&&&")
-        
-        self.reminder_list.addReminder(input_array[0], description: input_array[1], date: input_array[2])
         
         
         for subview in scrollView.subviews {
@@ -96,6 +98,18 @@ class ViewController: UIViewController, DataEnteredDelegate {
             }
             
         }
+        
+        
+        if input_array.count < 4 {
+            print("help")
+            self.reminder_list.addReminder(input_array[0], description: input_array[1], date: input_array[2])
+        } else {
+            var list_indx : Int! = Int(input_array[3])
+            self.reminder_list.reminder_names[list_indx] = input_array[0]
+            self.reminder_list.reminder_descripts[list_indx] = input_array[1]
+            self.reminder_list.reminder_dates[list_indx] = input_array[2]
+        }
+        
         
         
         var counter = 0.0

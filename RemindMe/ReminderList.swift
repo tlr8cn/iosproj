@@ -76,6 +76,7 @@ class ReminderList {
     
     public func findIndex(date : String) -> Int {
         
+        
         let date_formatter = NSDateFormatter()
         date_formatter.dateFormat = "dd-MM-yyyy HH:mm"
         

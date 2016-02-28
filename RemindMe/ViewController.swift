@@ -50,6 +50,8 @@ class ViewController: UIViewController, DataEnteredDelegate {
     
     let reminder_list = ReminderList.sharedInstance
     
+    let notification_queue = NotificationQueue.sharedInstance
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +104,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
         
         if input_array.count < 4 {
             self.reminder_list.addReminder(input_array[0], description: input_array[1], date: input_array[2])
+            
         } else {
             var list_indx : Int! = Int(input_array[3])
             self.reminder_list.reminder_names[list_indx] = input_array[0]
@@ -114,7 +117,9 @@ class ViewController: UIViewController, DataEnteredDelegate {
         
         
         
-        var counter = 0.0
+        
+        
+        var counter = 15.0
         
         for var i = 0; i < reminder_list.reminder_names.count; ++i {
             
@@ -130,7 +135,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
             date_label.center = CGPointMake(160, CGFloat(counter + 30))
             separator.center = CGPointMake(160, CGFloat(counter + 45))
             
-       //     name_button.textAlignment = NSTextAlignment.Center
+
             descr_label.textAlignment = NSTextAlignment.Center
             date_label.textAlignment = NSTextAlignment.Center
             separator.textAlignment = NSTextAlignment.Center
@@ -152,14 +157,27 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
             separator.textColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             
-  //          self.view.addSubview(name_button)
-   //         self.view.addSubview(descr_label)
-   //         self.view.addSubview(date_label)
-    //        self.view.addSubview(separator)
-            
             
             name_button.tag = i
             
+            
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+            var date = dateFormatter.dateFromString(reminder_list.reminder_dates[i])
+            
+            let notification = UILocalNotification()
+            notification.fireDate = date
+            notification.alertBody = "REMINDER: " + reminder_list.reminder_names[i]
+            notification.alertAction = "Got it!"
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
+            let prev_notification : UILocalNotification? = notification_queue.getNotification(name_button.tag)
+           
+            if prev_notification != nil {
+                UIApplication.sharedApplication().cancelLocalNotification(prev_notification!)
+            }
+            
+            notification_queue.updateNotification(name_button.tag, notification: notification)
             
             scrollView.addSubview(name_button)
             
@@ -169,17 +187,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
             counter += 65.0
         }
-        /*
-        for reminder in self.reminder_list.reminders {
-            var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
-            label.center = CGPointMake(160, CGFloat(counter))
-            label.textAlignment = NSTextAlignment.Center
-            label.text = reminder
-            self.view.addSubview(label)
-            
-            counter += 40.0
-        }
-        */
+
     }
 
 

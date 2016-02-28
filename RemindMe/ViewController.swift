@@ -50,7 +50,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
     
     let reminder_list = ReminderList.sharedInstance
     
-    let notification_queue = NotificationQueue.sharedInstance
+    let timer_queue = TimerQueue.sharedInstance
     
     
     override func viewDidLoad() {
@@ -58,12 +58,51 @@ class ViewController: UIViewController, DataEnteredDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         //var remind = Remind(name: "yes")
         //self.view.addSubview(Remind)
-
-
         
+        
+        scrollView.contentSize = CGSizeMake(0, 2000);
         
     }
     
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(false)
+        /*
+        for var i = 0; i < reminder_list.reminder_dates.count; i++ {
+            var date_formatter = NSDateFormatter()
+            date_formatter.dateFormat = "dd-MM-yyyy HH:mm"
+            var reminder_date = date_formatter.dateFromString(reminder_list.reminder_dates[i])
+            
+            var todaysDate:NSDate = NSDate()
+            
+            
+            
+            if reminder_date!.compare(todaysDate) == .OrderedAscending {
+                var temp = i
+                // Create the alert controller
+                var alertController = UIAlertController(title: reminder_list.reminder_names[i], message: reminder_list.reminder_descripts[i], preferredStyle: .Alert)
+                
+                // Create the actions
+                var okAction = UIAlertAction(title: "Postpone", style: UIAlertActionStyle.Default) {
+                    UIAlertAction in
+                    self.postponeReminder(temp, date: reminder_date!.dateByAddingTimeInterval(3600))
+                }
+                var cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel) {
+                    UIAlertAction in
+                    self.dismissReminder(temp)
+                }
+                
+                // Add the actions
+                alertController.addAction(okAction)
+                alertController.addAction(cancelAction)
+                
+                // Present the controller
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        }
+*/
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -94,12 +133,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
         let input_array = info.componentsSeparatedByString("&&&")
         
         
-        for subview in scrollView.subviews {
-            if subview is UILabel || subview is UIButton{
-                subview.removeFromSuperview()
-            }
-            
-        }
+        self.removeShownReminders()
         
         
         if input_array.count < 4 {
@@ -115,9 +149,30 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
         }
         
+        self.showReminders()
+
+    }
+
+
+    func removeShownReminders() {
+        for subview in scrollView.subviews {
+            if subview is UILabel || subview is UIButton{
+                subview.removeFromSuperview()
+            }
+            
+        }
+    }
+    
+    
+    func showInfo(sender: UIButton!) {
+        
+        tapped_button_tag = sender.tag
+        performSegueWithIdentifier("EditEntry", sender: nil)
         
         
-        
+    }
+    
+    func showReminders() {
         
         var counter = 15.0
         
@@ -135,7 +190,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
             date_label.center = CGPointMake(160, CGFloat(counter + 30))
             separator.center = CGPointMake(160, CGFloat(counter + 45))
             
-
+            
             descr_label.textAlignment = NSTextAlignment.Center
             date_label.textAlignment = NSTextAlignment.Center
             separator.textAlignment = NSTextAlignment.Center
@@ -160,7 +215,28 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
             name_button.tag = i
             
+            print("tag: " + String(name_button.tag))
             
+            
+            var date_formatter = NSDateFormatter()
+            date_formatter.dateFormat = "dd-MM-yyyy HH:mm"
+            var reminder_date = date_formatter.dateFromString(reminder_list.reminder_dates[i])
+            
+            var todaysDate:NSDate = NSDate()
+            
+            let prev_timer : NSTimer? = timer_queue.getTimer(name_button.tag)
+            
+            if prev_timer != nil {
+                prev_timer?.invalidate()
+            }
+            
+            var interval = NSCalendar.currentCalendar().components(NSCalendarUnit.Second, fromDate: todaysDate, toDate: reminder_date!, options: []).second
+            
+            var timer = NSTimer.scheduledTimerWithTimeInterval(Double(interval), target: self, selector: "createAlert:", userInfo: name_button.tag, repeats: false)
+            
+            timer_queue.updateTimer(name_button.tag, timer: timer)
+            
+            /*
             var dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
             var date = dateFormatter.dateFromString(reminder_list.reminder_dates[i])
@@ -172,13 +248,13 @@ class ViewController: UIViewController, DataEnteredDelegate {
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
             let prev_notification : UILocalNotification? = notification_queue.getNotification(name_button.tag)
-           
+            
             if prev_notification != nil {
-                UIApplication.sharedApplication().cancelLocalNotification(prev_notification!)
+            UIApplication.sharedApplication().cancelLocalNotification(prev_notification!)
             }
             
             notification_queue.updateNotification(name_button.tag, notification: notification)
-            
+            */
             scrollView.addSubview(name_button)
             
             scrollView.addSubview(descr_label)
@@ -187,19 +263,58 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
             counter += 65.0
         }
+    }
+    
+    func createAlert(timer: NSTimer) {
+        
+        let indx : Int = timer.userInfo as! Int
+        
+        print("index: " + String(indx))
+        
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        var reminder_date = dateFormatter.dateFromString(reminder_list.reminder_dates[indx])
+        
+        var alertController = UIAlertController(title: reminder_list.reminder_names[indx], message: reminder_list.reminder_descripts[indx], preferredStyle: .Alert)
+        
+        // Create the actions
+        var okAction = UIAlertAction(title: "Postpone", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            self.postponeReminder(indx, date: reminder_date!.dateByAddingTimeInterval(3600))
+        }
+        var cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            self.dismissReminder(indx)
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
+
+    func dismissReminder(indx: Int) {
 
     }
-
-
-    func showInfo(sender: UIButton!) {
+    
+    func postponeReminder(indx: Int, date : NSDate) {
         
-        tapped_button_tag = sender.tag
-        performSegueWithIdentifier("EditEntry", sender: nil)
+        var date_formatter = NSDateFormatter()
+        date_formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        var new_reminder_date = date_formatter.stringFromDate(date)
         
+        reminder_list.reminder_dates[indx] = new_reminder_date
         
+        self.removeShownReminders()
+        self.reminder_list.sortByDate();
+        self.showReminders()
+        
+   
     }
-
-
     
     
 //MARK: Actions

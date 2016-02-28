@@ -104,6 +104,29 @@ class ReminderList {
 
     }
     
+
+    
+    
+    public func removeReminder(indx: Int) {
+        var new_name_list = [String]()
+        var new_descript_list = [String]()
+        var new_date_list = [String]()
+        
+        for var i = 0; i < reminder_dates.count; i++ {
+            if i == indx {
+                continue
+            } else {
+                new_name_list.append(reminder_names[i])
+                new_date_list.append(reminder_dates[i])
+                new_descript_list.append(reminder_descripts[i])
+            }
+        }
+        
+        reminder_names = new_name_list
+        reminder_descripts = new_descript_list
+        reminder_dates = new_date_list
+    }
+    
     
     public func findIndex(date : String) -> Int {
         

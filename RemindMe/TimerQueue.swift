@@ -10,17 +10,17 @@ import Foundation
 import UIKit
 
 
-class NotificationQueue {
+class TimerQueue {
     
-    var dict : [Int:UILocalNotification] = [:]
+    var dict : [Int:NSTimer] = [:]
     
     
     
-    public func updateNotification(indx : Int, notification : UILocalNotification) {
-        dict[indx] = notification
+    public func updateTimer(indx : Int, timer : NSTimer) {
+        dict[indx] = timer
     }
     
-    public func getNotification(indx : Int) -> UILocalNotification? {
+    public func getTimer(indx : Int) -> NSTimer? {
         if dict[indx] != nil {
             return dict[indx]!
         }
@@ -29,9 +29,9 @@ class NotificationQueue {
         
     }
     
-    class var sharedInstance : NotificationQueue {
+    class var sharedInstance : TimerQueue {
         struct Static {
-            static let instance : NotificationQueue = NotificationQueue()
+            static let instance : TimerQueue = TimerQueue()
         }
         return Static.instance
     }

@@ -74,11 +74,43 @@ class ReminderList {
     }
     
     
+    public func sortByDate() {
+        
+        let date_formatter = NSDateFormatter()
+        date_formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        
+        
+        for var i = 0; i < reminder_dates.count; i++ {
+            var temp_date : String! = reminder_dates[i]
+            var temp_name : String! = reminder_names[i]
+            var temp_descript : String! = reminder_descripts[i]
+            
+            var j = i - 1
+            while (j >= 0 && (date_formatter.dateFromString(temp_date))!.compare((date_formatter.dateFromString(reminder_dates[j]))!) == .OrderedAscending){
+            
+                reminder_dates[j+1] = reminder_dates[j]
+                reminder_descripts[j+1] = reminder_descripts[j]
+                reminder_names[j+1] = reminder_names[j]
+                
+                j = j - 1;
+            }
+            
+            reminder_dates[j+1] = temp_date
+            reminder_names[j+1] = temp_name
+            reminder_descripts[j+1] = temp_descript
+            
+            
+        }
+
+    }
+    
+    
     public func findIndex(date : String) -> Int {
         
         
         let date_formatter = NSDateFormatter()
         date_formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        
         
         let compare_date = date_formatter.dateFromString(date)
         

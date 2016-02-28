@@ -101,13 +101,15 @@ class ViewController: UIViewController, DataEnteredDelegate {
         
         
         if input_array.count < 4 {
-            print("help")
             self.reminder_list.addReminder(input_array[0], description: input_array[1], date: input_array[2])
         } else {
             var list_indx : Int! = Int(input_array[3])
             self.reminder_list.reminder_names[list_indx] = input_array[0]
             self.reminder_list.reminder_descripts[list_indx] = input_array[1]
             self.reminder_list.reminder_dates[list_indx] = input_array[2]
+            
+            self.reminder_list.sortByDate();
+            
         }
         
         

@@ -59,6 +59,10 @@ class ViewController: UIViewController, DataEnteredDelegate {
         //var remind = Remind(name: "yes")
         //self.view.addSubview(Remind)
         
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "registerSwipeGesture:")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         
         scrollView.contentSize = CGSizeMake(0, 2000);
         
@@ -101,6 +105,33 @@ class ViewController: UIViewController, DataEnteredDelegate {
             }
         }
 */
+    }
+    
+    func registerSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            if swipeGesture.direction == UISwipeGestureRecognizerDirection.Left {
+                for subview in self.scrollView.subviews {
+                    if subview is UIButton {
+                        var new_button = UIButton(frame: CGRectMake(0, 0, 200, 21))
+                        new_button.center = CGPointMake(275, subview.frame.origin.y + 20)
+                        new_button.setTitle("Delete", forState: UIControlState.Normal)
+                        new_button.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+                        new_button.tag = subview.tag
+                        new_button.addTarget(self, action: "deleteReminder:", forControlEvents: UIControlEvents.TouchUpInside)
+                        
+                        self.scrollView.addSubview(new_button)
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteReminder(sender:UIButton) {
+        self.reminder_list.removeReminder(sender.tag)
+        self.removeShownReminders()
+        self.reminder_list.sortByDate();
+        self.showReminders()
     }
 
 
@@ -215,7 +246,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
             name_button.tag = i
             
-            print("tag: " + String(name_button.tag))
+           // print("tag: " + String(name_button.tag))
             
             
             var date_formatter = NSDateFormatter()
@@ -255,6 +286,7 @@ class ViewController: UIViewController, DataEnteredDelegate {
             
             notification_queue.updateNotification(name_button.tag, notification: notification)
             */
+            
             scrollView.addSubview(name_button)
             
             scrollView.addSubview(descr_label)
@@ -298,7 +330,10 @@ class ViewController: UIViewController, DataEnteredDelegate {
     
 
     func dismissReminder(indx: Int) {
-
+        self.reminder_list.removeReminder(indx)
+        self.removeShownReminders()
+        self.reminder_list.sortByDate();
+        self.showReminders()
     }
     
     func postponeReminder(indx: Int, date : NSDate) {
@@ -312,7 +347,6 @@ class ViewController: UIViewController, DataEnteredDelegate {
         self.removeShownReminders()
         self.reminder_list.sortByDate();
         self.showReminders()
-        
    
     }
     
